@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>确认和提交</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        button {
+            background-color: #0056b3;
+            color: white;
+            cursor: pointer;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #003d82;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>确认和提交</h1>
+        <h2>申请表格</h2>
+        <table>
+            <tr>
+                <th>字段</th>
+                <th>内容</th>
+            </tr>
+            <tr>
+                <td>姓氏</td>
+                <td>张</td>
+            </tr>
+            <tr>
+                <td>名字</td>
+                <td>三</td>
+            </tr>
+            <tr>
+                <td>中文名</td>
+                <td>张三</td>
+            </tr>
+            <!-- 继续列出其他字段 -->
+        </table>
+
+        <h2>拟申请高校、专业、项目名单</h2>
+        <table>
+            <tr>
+                <th>高校</th>
+                <th>专业</th>
+                <th>项目</th>
+            </tr>
+            <tr>
+                <td>北京大学</td>
+                <td>计算机科学与技术</td>
+                <td>本科</td>
+            </tr>
+            <!-- 继续列出其他高校、专业和项目 -->
+        </table>
+
+        <button onclick="submitApplication()">提交</button>
+    </div>
+
+    <script>
+        function submitApplication() {
+            alert('申请已提交！');
+            window.location.href = '7成功提交.html';
+        }
+    </script>
+</body>
+</html>
