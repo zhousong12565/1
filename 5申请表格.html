@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>申请表格</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #0056b3;
+        }
+        h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input, select, textarea, button {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #0056b3;
+            color: white;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #003d82;
+        }
+        .form-section {
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .form-section:last-child {
+            margin-bottom: 0;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+        .upload-group {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .upload-group label {
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>申请表格</h1>
+        <form id="applicationForm" onsubmit="return goToConfirmationPage()">
+            <!-- 表格内容 -->
+            <div class="form-section" id="personal-info">
+                <h2>个人信息</h2>
+                <div class="form-group">
+                    <label for="lastName">姓氏：</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="firstName">名字：</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="chineseName">中文名（如果有）：</label>
+                    <input type="text" id="chineseName" name="chineseName">
+                </div>
+                <div class="form-group">
+                    <label for="dob">出生日期（mm/dd/yyyy）：</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">性别：</label>
+                    <select id="gender" name="gender" required>
+                        <option value="male">男</option>
+                        <option value="female">女</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="maritalStatus">婚姻状况：</label>
+                    <select id="maritalStatus" name="maritalStatus" required>
+                        <option value="married">已婚</option>
+                        <option value="single">单身</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="phone">电话（含区号）：</label>
+                    <input type="text" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="homeAddress">家庭住址：</label>
+                    <input type="text" id="homeAddress" name="homeAddress" required>
+                </div>
+                <div class="form-group">
+                    <label for="city">城市：</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+                <div class="form-group">
+                    <label for="state">省/州：</label>
+                    <input type="text" id="state" name="state" required>
+                </div>
+                <div class="form-group">
+                    <label for="country">国家：</label>
+                    <input type="text" id="country" name="country" required>
+                </div>
+                <div class="form-group">
+                    <label for="postalCode">邮政编码：</label>
+                    <input type="text" id="postalCode" name="postalCode" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">电子邮件地址：</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+
+            <div class="form-section" id="enrollment-info">
+                <h2>报名信息</h2>
+                <div class="form-group">
+                    <label for="enrollmentDate">期望入学日期：</label>
+                    <select id="enrollmentDate" name="enrollmentDate" required>
+                        <option value="January">一月</option>
+                        <option value="February">二月</option>
+                        <option value="March">三月</option>
+                        <option value="May">五月</option>
+                        <option value="June">六月</option>
+                        <option value="July">七月</option>
+                        <option value="September">九月</option>
+                        <option value="October">十月</option>
+                        <option value="November">十一月</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="accommodation">住宿需求：</label>
+                    <select id="accommodation" name="accommodation" required>
+                        <option value="dormitory">学生宿舍</option>
+                        <option value="commuter">通勤（21岁或以上）</option>
+                        <option value="withParents">与父母同住</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-section" id="english-proficiency">
+                <h2>英语水平考试</h2>
+                <div class="form-group">
+                    <label for="englishTestTaken">是否参加过英语水平考试（IELTS或iBT TOEFL）：</label>
+                    <select id="englishTestTaken" name="englishTestTaken" required>
+                        <option value="yes">是</option>
+                        <option value="no">否</option>
+                    </select>
+                </div>
+                <div id="englishTestDetails" class="form-group" style="display: none;">
+                    <label for="IELTSScore">IELTS： 分数</label>
+                    <input type="text" id="IELTSScore" name="IELTSScore">
+                    <label for="IELTSTestDate">考试日期（mm/dd/yyyy）：</label>
+                    <input type="date" id="IELTSTestDate" name="IELTSTestDate">
+                    <label for="TOEFLScore">iBT TOEFL： 分数</label>
+                    <input type="text" id="TOEFLScore" name="TOEFLScore">
+                    <label for="TOEFLTestDate">考试日期（mm/dd/yyyy）：</label>
+                    <input type="date" id="TOEFLTestDate" name="TOEFLTestDate">
+                </div>
+            </div>
+
+            <div class="form-section" id="chinese-proficiency">
+                <h2>中文水平考试</h2>
+                <div class="form-group">
+                    <label for="chineseTestTaken">是否参加过汉语水平考试（HSK）：</label>
+                    <select id="chineseTestTaken" name="chineseTestTaken" required>
+                        <option value="yes">是</option>
+                        <option value="no">否</option>
+                    </select>
+                </div>
+                <div id="chineseTestDetails" class="form-group" style="display: none;">
+                    <label for="HSKScore">HSK： 分数</label>
+                    <input type="text" id="HSKScore" name="HSKScore">
+                    <label for="HSKTestDate">考试日期（mm/dd/yyyy）：</label>
+                    <input type="date" id="HSKTestDate" name="HSKTestDate">
+                </div>
+            </div>
+
+            <div class="form-section" id="education-info">
+                <h2>教育信息</h2>
+                <h3>中学教育（列出所有就读过的高中）：</h3>
+                <div class="form-group">
+                    <label for="highSchoolName">学校名称：</label>
+                    <input type="text" id="highSchoolName" name="highSchoolName" required>
+                </div>
+                <div class="form-group">
+                    <label for="highSchoolCity">城市：</label>
+                    <input type="text" id="highSchoolCity" name="highSchoolCity" required>
+                </div>
+                <div class="form-group">
+                    <label for="highSchoolState">省/州：</label>
+                    <input type="text" id="highSchoolState" name="highSchoolState" required>
+                </div>
+                <div class="form-group">
+                    <label for="highSchoolCountry">国家：</label>
+                    <input type="text" id="highSchoolCountry" name="highSchoolCountry" required>
+                </div>
+                <div class="form-group">
+                    <label for="highSchoolDiploma">是否获得高中毕业证书：</label>
+                    <select id="highSchoolDiploma" name="highSchoolDiploma" required>
+                        <option value="yes">是</option>
+                        <option value="no">否</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="highSchoolDates">就读时间（从 yyyy/mm 到 yyyy/mm）：</label>
+                    <input type="text" id="highSchoolDates" name="highSchoolDates" required>
+                </div>
+
+                <h3>大学教育（列出所有就读过的大学）：</h3>
+                <div class="form-group">
+                    <label for="universityName">学校名称：</label>
+                    <input type="text" id="universityName" name="universityName" required>
+                </div>
+                <div class="form-group">
+                    <label for="universityMajor">专业：</label>
+                    <input type="text" id="universityMajor" name="universityMajor" required>
+                </div>
+                <div class="form-group">
+                    <label for="universityCity">城市：</label>
+                    <input type="text" id="universityCity" name="universityCity" required>
+                </div>
+                <div class="form-group">
+                    <label for="universityState">省/州：</label>
+                    <input type="text" id="universityState" name="universityState" required>
+                </div>
+                <div class="form-group">
+                    <label for="universityCountry">国家：</label>
+                    <input type="text" id="universityCountry" name="universityCountry" required>
+                </div>
+                <div class="form-group">
+                    <label for="universityDiploma">是否获得学位/文凭：</label>
+                    <select id="universityDiploma" name="universityDiploma" required>
+                        <option value="yes">是</option>
+                        <option value="no">否</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="universityDates">就读时间（从 yyyy/mm 到 yyyy/mm）：</label>
+                    <input type="text" id="universityDates" name="universityDates" required>
+                </div>
+            </div>
+
+            <div class="form-section" id="program-info">
+                <h2>申请的课程</h2>
+                <div class="form-group">
+                    <label for="program">（请仅选择一个课程）：</label>
+                    <select id="program" name="program" required onchange="updateUploadList()">
+                        <option value="language">语言课程</option>
+                        <option value="undergraduate">大学本科生课程</option>
+                        <option value="master">硕士研究生课程</option>
+                        <option value="phd">博士研究生课程</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-section" id="upload-info">
+                <h2>上传材料列表（扫描件）</h2>
+                <div id="undergraduateUploads" class="upload-group">
+                    <label>高中成绩单：</label>
+                    <input type="file" name="highSchoolTranscript">
+                    <label>高中毕业证书：</label>
+                    <input type="file" name="highSchoolDiploma">
+                </div>
+                <div id="masterUploads" class="upload-group">
+                    <label>本科成绩单：</label>
+                    <input type="file" name="bachelorTranscript">
+                    <label>本科学位证书：</label>
+                    <input type="file" name="bachelorDiploma">
+                    <label>推荐信一：</label>
+                    <input type="file" name="recommendation1">
+                    <label>推荐信二：</label>
+                    <input type="file" name="recommendation2">
+                </div>
+                <div id="phdUploads" class="upload-group">
+                    <label>本科成绩单：</label>
+                    <input type="file" name="bachelorTranscript">
+                    <label>本科学位证书：</label>
+                    <input type="file" name="bachelorDiploma">
+                    <label>硕士成绩单：</label>
+                    <input type="file" name="masterTranscript">
+                    <label>硕士学位证书：</label>
+                    <input type="file" name="masterDiploma">
+                    <label>推荐信一：</label>
+                    <input type="file" name="recommendation1">
+                    <label>推荐信二：</label>
+                    <input type="file" name="recommendation2">
+                </div>
+            </div>
+
+            <div class="form-section" id="visa-info">
+                <h2>签证信息</h2>
+                <div class="form-group">
+                    <label for="visaStatus">请选择你的签证状态：</label>
+                    <select id="visaStatus" name="visaStatus" required>
+                        <option value="study">目前持有中国学习许可</option>
+                        <option value="applying">正在申请中国学生签证</option>
+                        <option value="work">目前持有中国工作签证</option>
+                        <option value="resident">中国永久居民</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-section" id="agency-info">
+                <h2>教育机构信息（如果通过机构申请）</h2>
+                <div class="form-group">
+                    <label for="agentName">代理人姓名：</label>
+                    <input type="text" id="agentName" name="agentName">
+                </div>
+                <div class="form-group">
+                    <label for="agencyName">机构名称：</label>
+                    <input type="text" id="agencyName" name="agencyName">
+                </div>
+                <div class="form-group">
+                    <label for="agencyAddress">地址：</label>
+                    <input type="text" id="agencyAddress" name="agencyAddress">
+                </div>
+                <div class="form-group">
+                    <label for="agencyCity">城市：</label>
+                    <input type="text" id="agencyCity" name="agencyCity">
+                </div>
+                <div class="form-group">
+                    <label for="agencyState">省/州：</label>
+                    <input type="text" id="agencyState" name="agencyState">
+                </div>
+                <div class="form-group">
+                    <label for="agencyCountry">国家：</label>
+                    <input type="text" id="agencyCountry" name="agencyCountry">
+                </div>
+                <div class="form-group">
+                    <label for="agencyPostalCode">邮政编码：</label>
+                    <input type="text" id="agencyPostalCode" name="agencyPostalCode">
+                </div>
+                <div class="form-group">
+                    <label for="agencyEmail">电子邮件地址：</label>
+                    <input type="email" id="agencyEmail" name="agencyEmail">
+                </div>
+                <div class="form-group">
+                    <label for="agencyPhone">电话（含区号）：</label>
+                    <input type="text" id="agencyPhone" name="agencyPhone">
+                </div>
+            </div>
+
+            <div class="form-section" id="emergency-contact">
+                <h2>紧急联系人信息</h2>
+                <div class="form-group">
+                    <label for="emergencyLastName">紧急联系人姓氏：</label>
+                    <input type="text" id="emergencyLastName" name="emergencyLastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="emergencyFirstName">紧急联系人名字：</label>
+                    <input type="text" id="emergencyFirstName" name="emergencyFirstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="emergencyRelation">与申请人的关系：</label>
+                    <input type="text" id="emergencyRelation" name="emergencyRelation" required>
+                </div>
+                <div class="form-group">
+                    <label for="emergencyAddress">地址：</label>
+                    <input type="text" id="emergencyAddress" name="emergencyAddress" required>
+                </div>
+                <div class="form-group">
+                    <label for="emergencyCity">城市：</label>
+                    <input type="text" id="emergencyCity" name="emergencyCity" required>
+                </div>
+                <div class="form-group">
+                    <label for="emergencyState">省/州：</label>
+                    <input type="text" id="emergencyState" name="emergencyState" required>
+                </div>
+                <div class="form-group">
+                    <label for="emergencyCountry">国家：</label>
+                    <input type="text" id="emergencyCountry" name="emergencyCountry" required>
+                </div>
+                <div class="form-group">
+                    <label for="emergencyPostalCode">邮政编码：</label>
+                    <input type="text" id="emergencyPostalCode" name="emergencyPostalCode" required>
+                </div>
+                <div class="form-group">
+                    <label for="emergencyEmail">电子邮件地址：</label>
+                    <input type="email" id="emergencyEmail" name="emergencyEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="emergencyPhone">电话（含区号）：</label>
+                    <input type="text" id="emergencyPhone" name="emergencyPhone" required>
+                </div>
+            </div>
+
+            <div class="form-section" id="payment-info">
+                <h2>支付信息</h2>
+                <div class="form-group">
+                    <label for="applicationFee">申请费： C$150.00</label>
+                </div>
+                <div class="form-group">
+                    <label for="cardType">信用卡类型：</label>
+                    <select id="cardType" name="cardType" required>
+                        <option value="MasterCard">MasterCard</option>
+                        <option value="Visa">Visa</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="cardNumber">信用卡号：</label>
+                    <input type="text" id="cardNumber" name="cardNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="expiryDate">到期日期（mm/yyyy）：</label>
+                    <input type="text" id="expiryDate" name="expiryDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="cardHolderSignature">信用卡持卡人签名：</label>
+                    <input type="text" id="cardHolderSignature" name="cardHolderSignature" required>
+                </div>
+                <div class="form-group">
+                    <label for="paymentDate">日期（mm/dd/yyyy）：</label>
+                    <input type="date" id="paymentDate" name="paymentDate" required>
+                </div>
+            </div>
+
+            <div class="form-section" id="signature">
+                <h2>签名</h2>
+                <div class="form-group">
+                    <label for="signatureConfirmation">通过我的签名，我确认所提供的信息是真实和准确的。</label>
+                    <input type="checkbox" id="signatureConfirmation" name="signatureConfirmation" required>
+                </div>
+                <div class="form-group">
+                    <label for="applicantSignature">申请人签名：</label>
+                    <input type="text" id="applicantSignature" name="applicantSignature" required>
+                </div>
+                <div class="form-group">
+                    <label for="signatureDate">日期（mm/dd/yyyy）：</label>
+                    <input type="date" id="signatureDate" name="signatureDate" required>
+                </div>
+            </div>
+
+            <button type="submit">确认并进入下一步</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('englishTestTaken').addEventListener('change', function() {
+            var englishDetails = document.getElementById('englishTestDetails');
+            if (this.value === 'yes') {
+                englishDetails.style.display = 'block';
+            } else {
+                englishDetails.style.display = 'none';
+            }
+        });
+
+        document.getElementById('chineseTestTaken').addEventListener('change', function() {
+            var chineseDetails = document.getElementById('chineseTestDetails');
+            if (this.value === 'yes') {
+                chineseDetails.style.display = 'block';
+            } else {
+                chineseDetails.style.display = 'none';
+            }
+        });
+
+        function updateUploadList() {
+            var program = document.getElementById('program').value;
+            var undergraduateUploads = document.getElementById('undergraduateUploads');
+            var masterUploads = document.getElementById('masterUploads');
+            var phdUploads = document.getElementById('phdUploads');
+
+            undergraduateUploads.style.display = 'none';
+            masterUploads.style.display = 'none';
+            phdUploads.style.display = 'none';
+
+            if (program === 'undergraduate') {
+                undergraduateUploads.style.display = 'flex';
+            } else if (program === 'master') {
+                masterUploads.style.display = 'flex';
+            } else if (program === 'phd') {
+                phdUploads.style.display = 'flex';
+            }
+        }
+
+        function goToConfirmationPage() {
+            window.location.href = '6确认提交.html';
+            return false;
+        }
+    </script>
+</body>
+</html>
