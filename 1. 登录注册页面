@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册和登录</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('fengxing0783_A_university_campus_seen_through_a_semi-transparen_67fb37fb-954f-4f19-b087-e362769ae1ac.png');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        h1 {
+            color: #0056b3;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .form-buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-buttons button:hover {
+            background-color: #003d82;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>注册和登录</h1>
+
+        <div id="loginForm">
+            <div class="form-group">
+                <label for="login-email">电子邮件：</label>
+                <input type="email" id="login-email" name="login-email" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">密码：</label>
+                <input type="password" id="login-password" name="login-password" required>
+            </div>
+            <div class="form-buttons">
+                <button onclick="login()">登录</button>
+                <button onclick="showRegisterForm()">注册</button>
+            </div>
+        </div>
+
+        <div id="registerForm" style="display: none;">
+            <div class="form-group">
+                <label for="register-email">电子邮件：</label>
+                <input type="email" id="register-email" name="register-email" required>
+            </div>
+            <div class="form-group">
+                <label for="register-password">密码：</label>
+                <input type="password" id="register-password" name="register-password" required>
+            </div>
+            <div class="form-group">
+                <label for="register-confirm-password">确认密码：</label>
+                <input type="password" id="register-confirm-password" name="register-confirm-password" required>
+            </div>
+            <div class="form-buttons">
+                <button onclick="register()">注册</button>
+                <button onclick="showLoginForm()">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showRegisterForm() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'block';
+        }
+
+        function showLoginForm() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('registerForm').style.display = 'none';
+        }
+
+        function login() {
+            // 登录逻辑，成功后跳转
+            alert('登录成功');
+            window.location.href = '3综合性调查问卷.html';
+        }
+
+        function register() {
+            // 注册逻辑，成功后跳转
+            alert('注册成功');
+            window.location.href = '3综合性调查问卷.html';
+        }
+    </script>
+</body>
+</html>
